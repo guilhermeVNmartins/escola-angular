@@ -1,0 +1,61 @@
+<router-outlet></router-outlet>
+<div>
+    <h5 class="font-weight-bold"> 
+        Curso
+    </h5>
+</div>
+
+<div>
+    <label class="my-3">
+        Nome:
+    </label>
+
+    <input class="form-control my-3" type="text" placeholder="Pesquisar..." [(ngModel)]="nome">
+    <button type="submit" class="btn btn-primary my-3" (click)="dadosFiltrados()">
+        Pesquisar
+    </button>
+</div>
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Código</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Instrutor</th>
+            <th scope="col">Local</th>
+            <th scope="col">Carga Horária</th>
+            <th scope="col">Data Início</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="dadosFiltrado.length !=0; else todosOsDados">
+          <tr *ngFor="let curso of dadosFiltrado">
+            <th scope="row"><input type= "radio"></th>
+            <td> {{curso.codigo}} </td>
+            <td> {{curso.nome}} </td>
+            <td> {{curso.instrutor}} </td>
+            <td> {{curso.local}} </td>
+            <td> {{curso.cargaHoraria}} </td>
+            <td> {{curso.dataInicio | date: 'shortDate'}} </td>
+            </tr>
+        </tbody>
+        <ng-template #todosOsDados>
+            <tbody *ngIf="dadosCurso.length != 0" >
+                <tr *ngFor="let curso of dadosCurso">
+                  <th scope="row"><input type= "radio"></th>
+                  <td> {{curso.codigo}} </td>
+                  <td> {{curso.nome}} </td>
+                  <td> {{curso.instrutor}} </td>
+                  <td> {{curso.local}} </td>
+                  <td> {{curso.cargaHoraria}} </td>
+                  <td> {{curso.dataInicio | date: 'shortDate'}} </td>
+                  </tr>
+              </tbody>
+        </ng-template>
+      </table>
+</div>
+<div>
+    <button type="submit" class="btn btn-primary " >Incluir</button>
+    <button type="submit" class="btn btn-primary mx-3" >Alteral</button>
+    <button type="submit" class="btn btn-primary " >Excluir</button>
+</div>
