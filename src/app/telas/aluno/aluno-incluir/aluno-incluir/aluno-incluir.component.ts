@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./aluno-incluir.component.scss']
 })
 export class AlunoIncluirComponent {
-
+  BotaoAlunoIncluir(){
+    return alert('Aluno incluido com sucesso!')
+}
 }

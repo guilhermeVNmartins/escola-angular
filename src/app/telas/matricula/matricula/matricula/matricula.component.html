@@ -4,6 +4,41 @@
 </div>
 <div>
     <label class="my-3">Aluno:</label>
-    <input class="form-control my-3" type="text" placeholder="Pesquisar...">
-    <button type="submit" class="btn btn-primary my-3">Pesquisar</button>
+    <input class="form-control my-3" type="text" placeholder="Pesquisar..." [(ngModel)]="nome">
+    <button type="submit" class="btn btn-primary my-3" (click)="dadosFiltrados()">Pesquisar</button>
+</div>
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Código</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Matrícula</th>
+
+          </tr>
+        </thead>
+        <tbody *ngIf="dadosFiltrado.length !=0; else todosOsDados">
+          <tr *ngFor="let curso of dadosFiltrado">
+            <th scope="row"><input type= "radio"></th>
+            <td> {{curso.codigo}} </td>
+            <td> {{curso.nome}} </td>
+            <td> {{curso.matricula}} </td>
+            </tr>
+        </tbody>
+        <ng-template #todosOsDados>
+            <tbody *ngIf="dadosMatricula.length != 0" >
+                <tr *ngFor="let curso of dadosMatricula">
+                  <th scope="row"><input type= "radio"></th>
+                  <td> {{curso.codigo}} </td>
+                  <td> {{curso.nome}} </td>
+                  <td> {{curso.matricula}} </td>
+                  </tr>
+              </tbody>
+        </ng-template>
+      </table>
+</div>
+<div>
+    <button type="submit" class="btn btn-primary mx-3 " routerLink="/matricula-incluir">Incluir</button>
+    <button type="submit" class="btn btn-primary " >Excluir</button>
 </div>

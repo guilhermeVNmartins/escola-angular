@@ -8,7 +8,7 @@
 </div>
 <div class="container border p-3">
     <div>
-        <h5 class="font-weight-bold"> Aluno - Incluir</h5>
+        <h5 class="font-weight-bold"> Adicionar Curso</h5>
     </div>
     <div class="row">
         <div class="col">
@@ -22,8 +22,26 @@
             <input class="form-control my-3" type="date">
         </div>
         <div>
-            <a class="btn btn-primary" href="#" role="button"> Adicionar </a>
+            <a class="btn btn-primary" role="button"> Adicionar </a>
         </div>
     </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Curso</th>
+                <th scope="col">Data matrícula</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let matricula of dadosMatriculaIncluir">
+                <td> {{matricula.curso}} </td>
+                <td> {{matricula.dataMatricula| date: 'shortDate'}} </td>
+                <td> {{matricula.x}} </td>
+                </tr>
+            </tbody>
 
+<div class="my-3">
+    <a class="btn btn-primary" href="#" role="button" (click)="BotaoMatriculaIncluir()"> Incluir </a>
+    <a class="btn btn-primary mx-2" href="#" role="button" routerLink="/matricula"> Voltar </a>
 </div>
